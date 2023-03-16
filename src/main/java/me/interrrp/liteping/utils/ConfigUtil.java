@@ -22,7 +22,7 @@ public class ConfigUtil {
      * @return The message to send when a player does not have a permission.
      */
     public static String getNoPermissionMessage() {
-        return LitePing.getInstance().getConfig().getString("permission-system.no-permission-message");
+        return LitePing.getInstance().getConfig().getString("permission-system.no-perm-message");
     }
 
     /**
