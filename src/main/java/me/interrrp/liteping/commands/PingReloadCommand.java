@@ -7,6 +7,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import me.interrrp.liteping.LitePing;
+import me.interrrp.liteping.utils.PermissionUtil;
 
 /**
  * Command to reload the plugin.
@@ -39,8 +40,9 @@ public class PingReloadCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command c, String label, String[] args) {
         if (!sender.hasPermission("liteping.reload")) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                    plugin.getConfig().getString("permission-system.no-perm-message")));
+            if (sender instanceof Player) {
+                PermissionUtil.sendNoPermission((Player) sender);
+            }
 
             return true;
         }
