@@ -1,6 +1,5 @@
 #########################################################################
-# SpigotPing by xDefcon - Configuration file
-# https://www.spigotmc.org/resources/spigotping.24419/
+# LitePing by xDefcon - Configuration file
 # Please check for updates, and remember to update the config if needed!
 #########################################################################
 
@@ -27,20 +26,6 @@ others-ping:
   not-allowed-message: "&cYou do not have permission to check the ping of other players."
   # Customize the message sent to the players if the specified player can not be found.
   player-not-found: "&cThe specified player is not online."
-
-# Section related to the per command permission system.
-sound-manager:
-  # Set this to true if you want to enable sound after the ping command.
-  enabled: true
-  # Choose the sound type. A list of all available sounds is retrievable here: http://bit.ly/bukkit-sounds
-  # WARNING: The link provided is a Sound list for 1.11.2, if you are using other versions, do a quick search for
-  # specific sounds, search something like "Bukkit 1.8 Sound Enum".
-  # EXAMPLE: NOTE_PLING will work in versions below 1.9, for 1.9 and greater you should use BLOCK_NOTE_PLING
-  sound-type: "BLOCK_NOTE_BLOCK_PLING"
-  # Customize the volume (min: 0.0 - max: 1.0)
-  volume: 1.0
-  # Customize the pitch (playing speed, 1.0 = normal speed, 0.5 = half speed)
-  pitch: 1.0
 
 # Section related to the tablist management (you can open the tablist by pressing TAB in game).
 tablist:

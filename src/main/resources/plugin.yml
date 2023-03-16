@@ -1,11 +1,11 @@
-name: SpigotPing
-main: com.xdefcon.spigotping.SpigotPing
-author: xDefcon
+name: LitePing
+main: me.interrrp.liteping.LitePing
+author: interrrp
 version: "2.6"
 api-version: "1.14"
-description: "SpigotPing a simple and customizable plugin to show your ping."
+description: "LitePing - A simple and customizable plugin to show your ping."
 commands:
-    ping:
-      description: The main command for SpigotPing.
-    pingreload:
-      description: Reloads the plugin.
+  ping:
+    description: Show your/another player's ping.
+  pingreload:
+    description: Reload the plugin.
