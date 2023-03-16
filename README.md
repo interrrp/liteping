@@ -4,6 +4,8 @@
 
 A fork of [SpigotPing](https://github.com/xDefcon/spigot-ping)
 
+This fork aims to improve the code and extend configurability.
+
 ## Building (steps)
 
 - Clone the repository
