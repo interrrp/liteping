@@ -30,4 +30,13 @@ public class PermissionUtil {
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', ConfigUtil.getNoPermissionMessage()));
     }
 
+    /**
+     * Send a player a message saying they can't ping other players.
+     * 
+     * @param player The player to send the message to.
+     */
+    public static void sendNoOtherPing(Player player) {
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', ConfigUtil.getNoOtherPingMessage()));
+    }
+
 }

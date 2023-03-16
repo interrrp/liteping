@@ -26,6 +26,24 @@ public class ConfigUtil {
     }
 
     /**
+     * Get the message to send when a player tries to ping another player.
+     * 
+     * @return The message to send when a player tries to ping another player.
+     */
+    public static String getNoOtherPingMessage() {
+        return LitePing.getInstance().getConfig().getString("others-ping.not-allowed-message");
+    }
+
+    /**
+     * Get the message to send when a player is not found.
+     * 
+     * @return The message to send when a player is not found.
+     */
+    public static String getPlayerNotFoundMessage() {
+        return LitePing.getInstance().getConfig().getString("others-ping.player-not-found");
+    }
+
+    /**
      * Check if the tablist is enabled.
      * 
      * @return A boolean indicating if the tablist is enabled.

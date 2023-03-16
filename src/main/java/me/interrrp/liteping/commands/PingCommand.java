@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import me.interrrp.liteping.LitePing;
+import me.interrrp.liteping.utils.ConfigUtil;
 import me.interrrp.liteping.utils.PermissionUtil;
 import me.interrrp.liteping.utils.PingUtil;
 
@@ -47,30 +48,39 @@ public class PingCommand implements CommandExecutor {
         }
 
         final Player player = (Player) sender;
-        if (args.length == 0) {
+
+        boolean selfPing = args.length == 0;
+
+        if (selfPing) {
             if (!PermissionUtil.hasPermission(player, "liteping.ping")) {
                 PermissionUtil.sendNoPermission(player);
                 return true;
             }
 
             sendSelfPing(player);
-        } else {
+
+            return true;
+        }
+
+        if (!selfPing) {
             if (!PermissionUtil.hasPermission(player, "liteping.ping.others")) {
-                String noPerm = plugin.getConfig().getString("others-ping.not-allowed-message");
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', noPerm));
+                PermissionUtil.sendNoOtherPing(player);
                 return true;
             }
-            String target = args.length > 0 ? args[0] : null;
-            Player targetP = Bukkit.getPlayer(target);
-            if (targetP == null) {
+
+            String targetName = args.length > 0 ? args[0] : null;
+            Player target = Bukkit.getPlayer(targetName);
+
+            if (target == null) {
                 player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                        plugin.getConfig().getString("others-ping.player-not-found")));
+                        ConfigUtil.getPlayerNotFoundMessage()));
+
                 return true;
             }
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&',
-                    plugin.getConfig().getString("ping-command.ping-target-message")
-                            .replace("%ping%", "" + targetP.getPing())
-                            .replace("%target%", targetP.getName())));
+
+            sendTargetPing(player, target);
+
+            return true;
         }
 
         return true;
@@ -84,6 +94,20 @@ public class PingCommand implements CommandExecutor {
     private void sendSelfPing(Player player) {
         String ping = PingUtil.getPingStr(player);
         String message = plugin.getConfig().getString("ping-command.ping-message").replaceAll("%ping%", ping);
+
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
+    }
+
+    /**
+     * Send the ping of a player to a player.
+     * 
+     * @param player       The player to send the ping to.
+     * @param targetPlayer The player to send the ping of.
+     */
+    private void sendTargetPing(Player player, Player targetPlayer) {
+        String ping = PingUtil.getPingStr(targetPlayer);
+        String message = plugin.getConfig().getString("ping-command.ping-target-message")
+                .replaceAll("%ping%", ping).replaceAll("%target%", targetPlayer.getName());
 
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', message));
     }
