@@ -9,7 +9,7 @@ ping-command:
   ping-message: "&a[Ping] &7Your ping is: &a%ping%ms"
   # Customize the output of the command to check the ping of another player (if enabled).
   # Use %target% to indicate the name of the target player, use %ping% to indicate player's latency.
-  ping-target-message: "&a[Ping] &7The ping of &a%target% &7is: &a%ping%ms"
+  ping-target-message: "&a[Ping] &7The ping of &a%target% &7is &a%ping%ms"
 
 # Section related to the per command permission system.
 permission-system:
